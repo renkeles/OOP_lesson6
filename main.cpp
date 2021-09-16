@@ -1,25 +1,6 @@
 #include <iostream>
 #include <iomanip>
 
-int get_integer(const char* msg) {
-    char answer[256];
-    int n = 0;
-
-    while (1) {
-        std::cin >> std::setw(256) >> answer;
-        for (int i = 0; i < 256; i++) {
-            if (answer[i] == '\0') break;
-            if (!isdigit(answer[i])) {
-                break;
-            }
-
-        }
-    }
-   
-
-    return n;
-}
-
 template< class T1, class T2 >
 std::basic_ostream<T1, T2>& endll(std::basic_ostream<T1, T2>& os)
 {
@@ -30,14 +11,34 @@ std::basic_ostream<T1, T2>& endll(std::basic_ostream<T1, T2>& os)
     return os;
 }
 
+void task1() {
+	int num;
+	std::cout << "Enter num: ";
+	while (true)
+	{
+		std::cin >> num;
+		if (std::cin.good() && std::cin.peek() == '\n')
+		{
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			break;
+		}
+		std::cin.clear();
+		std::cout << "Wrong num, enter again: ";
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+
+	std::cout << "num = " << num << std::endl;
+}
+
+void task2() {
+	std::cout << "Hello" << endll;
+	std::cout << "world";
+}
+
 int main()
 {
-    //char msg[256];
-    //int num = get_integer(msg);
-    //std::cout << "num = " << num << std::endl;
-
-    std::cout << "A" << endll;
-    std::cout << "B";
+	task1();
+	task2();
 
     return 0;
 }
